@@ -1,17 +1,19 @@
 const BLOG = {
-  title: 'CRAIGARY',
-  author: 'Craig Hart',
-  email: 'i@craigary.net',
-  link: 'https://nobelium.vercel.app',
-  description: 'This gonna be an awesome website.',
-  lang: 'en-US', // ['en-US', 'zh-CN', 'zh-HK', 'zh-TW', 'ja-JP', 'es-ES']
+  title: 'Tesla в России',
+  author: 'Russian Tesla Community',
+  email: 'invntrm@gmail.com',
+  link: 'https://teslawiki.ru',
+  description: `Мы вместе собираем всё, что надо знать о теслах — по полочкам, 
+чтобы не искать информацию по крупицам в украинских форумах и приватных чатах, по знакомым и часам видео на YouTube.
+Комментируйте, предлагайте исправления и дополнения.`,
+  lang: ['ru-RU', 'en-US'], // ['en-US', 'zh-CN', 'zh-HK', 'zh-TW', 'ja-JP', 'es-ES']
   appearance: 'auto', // ['light', 'dark', 'auto'],
-  font: 'sans-serif', // ['sans-serif', 'serif']
+  font: ['SF Pro Display', 'Helvetica Neue', 'sans-serif'], // ['sans-serif', 'serif']
   lightBackground: '#ffffff', // use hex value, don't forget '#' e.g #fffefc
   darkBackground: '#18181B', // use hex value, don't forget '#'
   path: '', // leave this empty unless you want to deploy Nobelium in a folder
   since: 2021, // If leave this empty, current year will be used.
-  postsPerPage: 7,
+  postsPerPage: 1,
   sortByDate: false,
   showAbout: true,
   showArchive: true,
@@ -19,7 +21,7 @@ const BLOG = {
   ogImageGenerateURL: 'https://og-image-craigary.vercel.app', // The link to generate OG image, don't end with a slash
   socialLink: 'https://twitter.com/craigaryhart',
   seo: {
-    keywords: ['Blog', 'Website', 'Notion'],
+    keywords: ['Tesla', 'Wiki', 'Knowledge base', 'База знаний', 'Тесла Вики', 'M3', 'Model 3', 'Московское Тесла сообщество'],
     googleSiteVerification: '' // Remove the value or replace it with your own google site verification code
   },
   notionPageId: process.env.NOTION_PAGE_ID, // DO NOT CHANGE THIS！！！
