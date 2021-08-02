@@ -6,7 +6,7 @@ const BLOG = {
   description: `Мы вместе собираем всё, что надо знать о теслах — по полочкам, 
 чтобы не искать информацию по крупицам в украинских форумах и приватных чатах, по знакомым и часам видео на YouTube.
 Комментируйте, предлагайте исправления и дополнения.`,
-  lang: ['ru-RU', 'en-US'], // ['en-US', 'zh-CN', 'zh-HK', 'zh-TW', 'ja-JP', 'es-ES']
+  lang: 'ru-RU', // 'en-US'| 'zh-CN'| 'zh-HK'| 'zh-TW'| 'ja-JP'| 'es-ES'
   appearance: 'auto', // ['light', 'dark', 'auto'],
   font: ['SF Pro Display', 'Helvetica Neue', 'sans-serif'], // ['sans-serif', 'serif']
   lightBackground: '#ffffff', // use hex value, don't forget '#' e.g #fffefc
