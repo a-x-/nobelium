@@ -1,10 +1,12 @@
 import Layout from '@/layouts/layout'
-import { getAllPosts, getPostBlocks } from '@/lib/notion'
+import { getPostBlocks } from '@/lib/notion'
 import BLOG from '@/blog.config'
 import { createHash } from 'crypto'
+import { NotionAPI } from 'notion-client'
 
 const BlogPost = ({ post, blockMap, emailHash }) => {
   if (!post) return null
+  console.log({post})
   return (
     <Layout
       blockMap={blockMap}
@@ -16,17 +18,15 @@ const BlogPost = ({ post, blockMap, emailHash }) => {
 }
 
 export async function getStaticPaths () {
-  const posts = await getAllPosts({ includePages: true })
   return {
-    paths: posts.map(row => `${BLOG.path}/${row.slug}`),
+    paths: [],
     fallback: true
   }
 }
 
 export async function getStaticProps ({ params: { slug } }) {
-  const posts = await getAllPosts({ includePages: true })
-  const post = posts.find(t => t.slug === slug)
-  const blockMap = await getPostBlocks(post.id)
+  const post = getPost(slug)
+  const blockMap = await getPostBlocks(slug)
   const emailHash = createHash('md5')
     .update(BLOG.email)
     .digest('hex')

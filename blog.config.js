@@ -1,9 +1,11 @@
+Error.stackTraceLimit = Infinity;
+
 const BLOG = {
   title: 'Tesla в России',
   author: 'Russian Tesla Community',
   email: 'invntrm@gmail.com',
   link: 'https://teslawiki.ru',
-  description: `Мы вместе собираем всё, что надо знать о теслах — по полочкам, 
+  description: `Мы вместе собираем всё, что надо знать о теслах — по полочкам,
 чтобы не искать информацию по крупицам в украинских форумах и приватных чатах, по знакомым и часам видео на YouTube.
 Комментируйте, предлагайте исправления и дополнения.`,
   lang: 'ru-RU', // 'en-US'| 'zh-CN'| 'zh-HK'| 'zh-TW'| 'ja-JP'| 'es-ES'

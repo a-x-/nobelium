@@ -1,33 +1,37 @@
-import Container from '@/components/Container'
-import BlogPost from '@/components/BlogPost'
-import Pagination from '@/components/Pagination'
-import { getAllPosts } from '@/lib/notion'
+import Layout from '@/layouts/layout'
+import { getPostBlocks } from '@/lib/notion'
 import BLOG from '@/blog.config'
+import { createHash } from 'crypto'
+import { NotionAPI } from 'notion-client'
+
+const BlogPost = ({ post, blockMap, emailHash }) => {
+  if (!post) return null
+  return (
+    <Layout
+      blockMap={blockMap}
+      frontMatter={post}
+      emailHash={emailHash}
+      fullWidth={post.fullWidth}
+    />
+  )
+}
 
 export async function getStaticProps () {
-  const posts = await getAllPosts({ includePages: false })
-  const postsToShow = posts.slice(0, BLOG.postsPerPage)
-  const totalPosts = posts.length
-  const showNext = totalPosts > BLOG.postsPerPage
+console.log('static props wtf', BLOG.notionPageId)
+  const authToken = BLOG.notionAccessToken || null
+  const api = new NotionAPI({ authToken })
+  const post = await api.getPage(BLOG.notionPageId)
+  const blockMap = await getPostBlocks(BLOG.notionPageId)
+  const emailHash = createHash('md5')
+    .update(BLOG.email)
+    .digest('hex')
+    .trim()
+    .toLowerCase()
+
   return {
-    props: {
-      page: 1, // current page is 1
-      postsToShow,
-      showNext
-    },
+    props: { post, blockMap, emailHash },
     revalidate: 1
   }
 }
 
-const blog = ({ postsToShow, page, showNext }) => {
-  return (
-    <Container title={BLOG.title} description={BLOG.description}>
-      {postsToShow.map(post => (
-        <BlogPost key={post.id} post={post} />
-      ))}
-      {showNext && <Pagination page={page} showNext={showNext} />}
-    </Container>
-  )
-}
-
-export default blog
+export default BlogPost
